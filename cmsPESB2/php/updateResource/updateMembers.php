@@ -7,7 +7,7 @@
 	$content3 = $_REQUEST['content3'];
 
 	#obtenemos el archivo...
-	$jsonString = file_get_contents('/var/www/html/webPESB2/resources/JSON/infoPESB2.json');
+	$jsonString = file_get_contents('/var/www/html/web/resources/JSON/infoPESB2.json');
 	$data = json_decode($jsonString, true);
 
 	$data['teamInfo']['members'][$option]['name'] = $content1;
@@ -15,5 +15,5 @@
 	$data['teamInfo']['members'][$option]['desc'] = $content3;
 
 	$newJsonString = json_encode($data);
-	file_put_contents('/var/www/html/webPESB2/resources/JSON/infoPESB2.json', $newJsonString);
+	file_put_contents('/var/www/html/web/resources/JSON/infoPESB2.json', $newJsonString);
  ?>

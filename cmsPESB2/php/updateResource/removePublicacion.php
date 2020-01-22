@@ -4,7 +4,7 @@
 	$idPublication = $_REQUEST['idPublication'];
 
 	#obtenemos el archivo...
-	$jsonString = file_get_contents('/var/www/html/webPESB2/resources/JSON/infoPESB2.json');
+	$jsonString = file_get_contents('/var/www/html/web/resources/JSON/infoPESB2.json');
 	$data = json_decode($jsonString, true);
 
 	$members = sizeof($data['publications']['publicationsData']);
@@ -18,5 +18,5 @@
 		}
 	}
 	$newJsonString = json_encode($data);
-	file_put_contents('/var/www/html/webPESB2/resources/JSON/infoPESB2.json', $newJsonString);
+	file_put_contents('/var/www/html/web/resources/JSON/infoPESB2.json', $newJsonString);
  ?>
