@@ -2,7 +2,7 @@ $(document).ready(function(){
 
   loadDataJSON();
   editar();
-  //eliminar();
+  eliminar();
   //agregar();
 
 });
@@ -77,7 +77,7 @@ var obtener_data_editar = function(tbody, table){
 }
 
 var editar = function(){
-  $("#editar-usuario").on("click", function(){
+  $("#editar-publicacion").on("click", function(){
 
     var idPublication = $("#frmEditar #idPublication").val();
     var detalle = $("#frmEditar #detalle").val();
@@ -91,8 +91,27 @@ var editar = function(){
       }
 
     }).done( function( info ){
-      
+
       location.reload(true);
+    });
+  });
+}
+
+var eliminar = function(){
+  $("#eliminar-publicacion").on("click", function(){
+
+    var idPublication = $("#frmEliminar #idPublication").val();
+
+    $.ajax({
+      method: "POST",
+      url: "../php/updateResource/removePublicacion.php",
+      data: {
+        "idPublication"   : idPublication
+      }
+
+    }).done( function( info ){
+
+      //location.reload(true);
     });
   });
 }
