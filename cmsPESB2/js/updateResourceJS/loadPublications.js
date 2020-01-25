@@ -1,97 +1,83 @@
 $(document).ready(function(){
 
-  loadDataJSON();
-  editar();
+  listar();
+  guardar();
   eliminar();
-  //agregar();
-
+  editar();
 });
 
 $.fn.DataTable.ext.pager.numbers_length = 5;
 
-//funcion que permite cargar un archivo json...
-var loadDataJSON = function(){
+var listar = function(){
+  var t = $('#publicaciones').DataTable({
+      "responsive": true,
+      "dom": '<"newtoolbar">frtip',
 
+      "destroy":true,
+      "ajax":{
+        "method":"POST",
+        "url": "../php/updateResource/showDataPublicaciones.php"
+      },
 
-  var data_file = "../../resources/JSON/infoPESB2.json";
-  var http_request = new XMLHttpRequest();
-  try{
-    // Opera 8.0+, Firefox, Chrome, Safari
-    http_request = new XMLHttpRequest();
-  }catch (e){
-    // Internet Explorer Browsers
-      try{
-        http_request = new ActiveXObject("Msxml2.XMLHTTP");
-    }catch (e) {
-      try{
-        http_request = new ActiveXObject("Microsoft.XMLHTTP");
-      }catch (e){
-        // Something went wrong
-        alert("Your browser broke!");
-        return false;
-      }
-    }
-  }
+      "columns":[
+        {"data":"descripcionPublicacion"},
+        {"data":"estadoPublicacion"},
+        {"data":"linkAcceso"},
+        {"data":"nombre"},
+        {"defaultContent": "<button type='button' class='detalle btn btn-success'><i class='fa fa-file'></i></button> <button type='button' class='editar btn btn-primary' data-toggle='modal' data-target='#myModalEditar'><i class='fa fa-pencil-square-o'></i></button>	<button type='button' class='eliminar btn btn-danger' data-toggle='modal' data-target='#modalEliminar' ><i class='fa fa-trash-o'></i></button>"}
+      ]
+  });
+  $('#demo-custom-toolbar2').appendTo($("div.newtoolbar"));
 
-  http_request.onreadystatechange = function(){
-    if (http_request.readyState == 4  ){
-      // Javascript function JSON.parse to parse JSON data
-      var jsonObj = JSON.parse(http_request.responseText);
-
-      var publications = jsonObj.publications.publicationsData;
-
-      var t = $('#menuBarContent').DataTable({
-        "responsive": true,
-        "destroy":true,
-        "data" : publications,
-        "columns" : [
-             { "data" : "ID" },
-             { "data" : "publication"},
-             {"defaultContent": "<button type='button' class='edit btn btn-primary' data-toggle='modal' data-target='#myModalEditar'><i class='fa fa-pencil-square-o'></i></button>	<button type='button' class='delete btn btn-danger' data-toggle='modal' data-target='#modalEliminar' ><i class='fa fa-trash-o'></i></button>"}
-         ]
-      });
-
-      //funciones para obtener informacion editar/eliminar
-      obtener_id_eliminar("#menuBarContent tbody", t);
-  		obtener_data_editar("#menuBarContent tbody", t);
-    }
-  }
-  http_request.open("GET", data_file, true);
-  http_request.send();
+  obtener_id_eliminar("#publicaciones tbody", t);
+  obtener_id_detalle("#publicaciones tbody", t);
+  obtener_id_editar("#publicaciones tbody", t);
 }
 
+var obtener_id_editar = function(tbody, table){
+  $(tbody).on("click", "button.editar", function(){
+    var data = table.row( $(this).parents("tr") ).data();
+    var idpublication = $("#editarPublication #idpublication").val(data.idpublicacion);
+    var desc = $("#editarPublication #desc").val(data.descripcionPublicacion);
+    var link = $("#editarPublication #link").val(data.linkAcceso);
+
+  });
+}
+
+var obtener_id_detalle = function(tbody, table){
+  $(tbody).on("click", "button.detalle", function(){
+    var data = table.row( $(this).parents("tr") ).data();
+    var idmember =data.linkAcceso;
+    location.href = idmember;
+  });
+}
 var obtener_id_eliminar = function(tbody, table){
-  $(tbody).on("click", "button.delete", function(){
+  $(tbody).on("click", "button.eliminar", function(){
     var data = table.row( $(this).parents("tr") ).data();
-    var idPublication = $("#frmEliminar #idPublication").val(data.ID);
+    var idpublication = $("#frmEliminar #idpublication").val(data.idpublicacion);
   });
 }
 
-var obtener_data_editar = function(tbody, table){
-  $(tbody).on("click", "button.edit", function(){
-    var data = table.row( $(this).parents("tr") ).data();
-    var idPublication = $("#frmEditar #idPublication").val(data.ID);
-    var detalle = $("#frmEditar #detalle").val( data.publication);
+var guardar = function(){
+  $("#agregar").on("click", function(){
 
-  });
-}
-
-var editar = function(){
-  $("#editar-publicacion").on("click", function(){
-
-    var idPublication = $("#frmEditar #idPublication").val();
-    var detalle = $("#frmEditar #detalle").val();
+    var desc = $("#agregarPublicacion #desc").val();
+    var link = $("#agregarPublicacion #link").val();
+    var status = $("#agregarPublicacion #status").val();
+    var autor = $("#agregarPublicacion #autor").val();
 
     $.ajax({
       method: "POST",
-      url: "../php/updateResource/editDataPublication.php",
+      url: "../php/updateResource/addPublication.php",
       data: {
-        "idPublication"   : idPublication,
-        "detalle"   : detalle
-      }
-
+          "desc": desc,
+          "link": link,
+          "status": status,
+          "autor": autor
+        }
     }).done( function( info ){
 
+      var json_info = JSON.parse( info );
       location.reload(true);
     });
   });
@@ -99,19 +85,43 @@ var editar = function(){
 
 var eliminar = function(){
   $("#eliminar-publicacion").on("click", function(){
+    var idpublication = $("#frmEliminar #idpublication").val();
+    $.ajax({
+      method:"POST",
+      url: "../php/updateResource/removePublicacion.php",
+      data: {
+          "idpublication": idpublication
+          }
+    }).done( function( info ){
+      var json_info = JSON.parse( info );
+      location.reload(true);
+    });
+  });
+}
 
-    var idPublication = $("#frmEliminar #idPublication").val();
+var editar = function(){
+  $("#editar").on("click", function(){
+
+    var idpublication = $("#editarPublication #idpublication").val();
+    var desc = $("#editarPublication #desc").val();
+    var link = $("#editarPublication #link").val();
+    var status = $("#editarPublication #status").val();
+    var autor = $("#editarPublication #autor").val();
 
     $.ajax({
       method: "POST",
-      url: "../php/updateResource/removePublicacion.php",
+      url: "../php/updateResource/editPublication.php",
       data: {
-        "idPublication"   : idPublication
-      }
-
+          "idpublication": idpublication,
+          "desc": desc,
+          "link": link,
+          "status": status,
+          "autor": autor
+        }
     }).done( function( info ){
 
-      //location.reload(true);
+      var json_info = JSON.parse( info );
+      location.reload(true);
     });
   });
 }

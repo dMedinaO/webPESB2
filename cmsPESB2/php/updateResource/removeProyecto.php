@@ -7,9 +7,9 @@
 	$informacion = [];
 
 	#hacemos la consulta
-	$idpublication = $_REQUEST['idpublication'];
+	$idproyecto = $_REQUEST['idproyecto'];
 
-	$query = "delete from publicacion where idpublicacion= $idpublication";
+	$query = "delete from proyecto where idproyecto= $idproyecto";
 	$response['query'] = $query;
 
 	$resultado = mysqli_query($conexion, $query);
