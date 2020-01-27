@@ -27,10 +27,6 @@
     <!--Demo [ DEMONSTRATION ]-->
     <link href="../css/demo/nifty-demo.min.css" rel="stylesheet">
 
-    <!--DataTables [ OPTIONAL ]-->
-    <link href="../plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet">
-	  <link href="../plugins/datatables/extensions/Responsive/css/responsive.dataTables.min.css" rel="stylesheet">
-
     <!--JAVASCRIPT-->
     <!--=================================================-->
 
@@ -49,6 +45,10 @@
 
     <!--NiftyJS [ RECOMMENDED ]-->
     <script src="../js/nifty.min.js"></script>
+
+    <!--DataTables [ OPTIONAL ]-->
+    <link href="../plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet">
+	  <link href="../plugins/datatables/extensions/Responsive/css/responsive.dataTables.min.css" rel="stylesheet">
 
     <!--=================================================-->
 
@@ -71,14 +71,7 @@
 	  <script src="../plugins/datatables/media/js/dataTables.bootstrap.js"></script>
 	  <script src="../plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
 
-    <!--Dropzone [ OPTIONAL ]-->
-    <script src="../plugins/dropzone/dropzone.min.js"></script>
-    <link href="../plugins/dropzone/dropzone.min.css" rel="stylesheet">
-    <script src="../js/formatDropzone.js"></script>
-
-    <!-- script para cargar los titulos..-->
-    <script src="../js/updateResourceJS/loadElementHome.js"></script>
-
+    <script src="../js/updateResourceJS/loadFrases.js"></script>
 </head>
 
 <!--TIPS-->
@@ -174,21 +167,21 @@
                       <div class="panel panel-bordered panel-primary">
                         <div class="panel-heading">
                           <h3 class="panel-title">
-                            Elementos actuales en Sección Home
+                            Elementos actuales en Frase
                           </h3>
                         </div>
                         <div class="panel-body">
                             <table id="menuBarContent" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                 <thead>
                                   <tr>
-                                    <th class="min-tablet">Elemento</th>
+                                    <th class="min-tablet">Frase</th>
                                     <th class="min-tablet">Valor Actual</th>
                                     <th class="min-tablet">Editar</th>
 
                                   </tr>
                                   <tbody>
                                     <tr>
-                                      <td>Título</td>
+                                      <td>Frase Inicial</td>
                                       <td class="menu1"></td>
                                       <td>
                                         <button id="demo-dt-addrow-btn" class="btn btn-primary" data-toggle="modal" data-target="#modalEditTitle01"><i class="demo-pli-plus"></i>Editar</button>
@@ -196,7 +189,7 @@
                                     </tr>
 
                                     <tr>
-                                      <td>Descripción General</td>
+                                      <td>Frase Inicial 2</td>
                                       <td class="menu2"></td>
                                       <td>
                                         <button id="demo-dt-addrow-btn" class="btn btn-primary" data-toggle="modal" data-target="#modalEditTitle02"><i class="demo-pli-plus"></i>Editar</button>
@@ -204,43 +197,51 @@
                                     </tr>
 
                                     <tr>
-                                      <td>Frase Motivación</td>
+                                      <td>Frase Motivacional</td>
                                       <td class="menu3"></td>
                                       <td>
                                         <button id="demo-dt-addrow-btn" class="btn btn-primary" data-toggle="modal" data-target="#modalEditTitle03"><i class="demo-pli-plus"></i>Editar</button>
                                       </td>
                                     </tr>
+
+                                    <tr>
+                                      <td>Frase Publicaciones 1</td>
+                                      <td class="menu4"></td>
+                                      <td>
+                                        <button id="demo-dt-addrow-btn" class="btn btn-primary" data-toggle="modal" data-target="#modalEditTitle04"><i class="demo-pli-plus"></i>Editar</button>
+                                      </td>
+                                    </tr>
+
+                                    <tr>
+                                      <td>Frase Publicaciones 5</td>
+                                      <td class="menu5"></td>
+                                      <td>
+                                        <button id="demo-dt-addrow-btn" class="btn btn-primary" data-toggle="modal" data-target="#modalEditTitle05"><i class="demo-pli-plus"></i>Editar</button>
+                                      </td>
+                                    </tr>
+
+                                    <tr>
+                                      <td>Frase Proyectos 1</td>
+                                      <td class="menu6"></td>
+                                      <td>
+                                        <button id="demo-dt-addrow-btn" class="btn btn-primary" data-toggle="modal" data-target="#modalEditTitle06"><i class="demo-pli-plus"></i>Editar</button>
+                                      </td>
+                                    </tr>
+
+                                    <tr>
+                                      <td>Frase Proyectos 2</td>
+                                      <td class="menu7"></td>
+                                      <td>
+                                        <button id="demo-dt-addrow-btn" class="btn btn-primary" data-toggle="modal" data-target="#modalEditTitle07"><i class="demo-pli-plus"></i>Editar</button>
+                                      </td>
+                                    </tr>
+
                                   </tbody>
                                 </thead>
                             </table>
                         </div>
                       </div>
                     </div>
-
-                    <div class="col-sm-12 col-md-12">
-
-                      <div class="panel panel-bordered panel-primary">
-                        <div class="panel-heading">
-                          <h3 class="panel-title">
-                            Imagen actual correspondiente a sección.
-                          </h3>
-                        </div>
-                        <div class="panel-body">
-
-                          <div class="row">
-                            <button id="demo-dt-addrow-btn" class="btn btn-primary" data-toggle="modal" data-target="#modalEditTitle04"><i class="demo-pli-plus"></i>Editar</button>
-                          </div>
-
-                          <hr>
-                          <div class="row">
-                            <a href="../../resources/pictures/1.jpg">
-                              <img src="../../resources/pictures/1.jpg" alt="" class="img-thumbnail">
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
                   </div>
               </div>
             </div>
@@ -280,9 +281,6 @@
                                 <ul id="mainnav-menu" class="list-group">
 
           						            <!--Category name-->
-          						            <li class="list-header">CMS Contents</li>
-
-          						            <!--Menu list item-->
                                   <li>
                                       <a href="../barraMenu/">
                                           <i class="fa fa-book"></i>
@@ -384,7 +382,7 @@
             <!-- Remove the class "show-fixed" and "hide-fixed" to make the content always appears. -->
             <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-            <p class="pad-lft">&#0169; 2018 Desarrollado por <a href="http://dmedina.cl"> David Medina </a>, PESB2 Group, DIQBT, FCFM, Universidad de Chile</p>
+            <p class="pad-lft">&#0169; 2020 Desarrollado por David Medina, PESB2 Group, DIQBT, FCFM, Universidad de Chile</p>
 
 
 
@@ -407,12 +405,13 @@
     <!-- END OF CONTAINER -->
 
    <!-- modal section -->
+
    <div class="modal fade" id="modalEditTitle01" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
        <div class="modal-dialog">
          <div class="modal-content">
            <div class="modal-header">
              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-             <h4 class="modal-title" id="myModalLabel">Editar Título</h4>
+             <h4 class="modal-title" id="myModalLabel">Editar Frase Inicial 1</h4>
            </div>
            <div class="modal-body">
 
@@ -446,7 +445,7 @@
          <div class="modal-content">
            <div class="modal-header">
              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-             <h4 class="modal-title" id="myModalLabel">Editar Descripción general</h4>
+             <h4 class="modal-title" id="myModalLabel">Editar Frase Inicial 2</h4>
            </div>
            <div class="modal-body">
 
@@ -480,7 +479,7 @@
          <div class="modal-content">
            <div class="modal-header">
              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-             <h4 class="modal-title" id="myModalLabel">Editar Frase Motivación</h4>
+             <h4 class="modal-title" id="myModalLabel">Editar Frase Motivacional</h4>
            </div>
            <div class="modal-body">
 
@@ -514,25 +513,17 @@
          <div class="modal-content">
            <div class="modal-header">
              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-             <h4 class="modal-title" id="myModalLabel">Editar Imagen Sección</h4>
+             <h4 class="modal-title" id="myModalLabel">Editar Frase Publicaciones 1</h4>
            </div>
            <div class="modal-body">
 
-             <form id="frmAgregarFile" action="../php/uploadFile.php" class="dropzone" >
-               <div class="dz-default dz-message">
-                 <div class="dz-icon">
-                   <i class="demo-pli-upload-to-cloud icon-5x"></i>
+           <form id="editarTitulo04" action="" method="POST" data-parsley-validate class="form-horizontal form-label-left">
+             <div class="form-group">
+                 <label class="col-sm-3 control-label" for="title4">Título</label>
+                 <div class="col-sm-9">
+                     <input type="text" placeholder="Ingrese el texto para modificar" id="title4" class="form-control">
                  </div>
-                 <div>
-                   <span class="dz-text">Arrastra el documento aquí</span>
-                   <p class="text-sm text-muted">Haz click para hacerlo manual</p>
-                 </div>
-               </div>
-               <div class="fallback">
-                 <input name="file" type="file" multiple>
-               </div>
-             </form>
-
+             </div>
              <div class="ln_solid"></div>
 
            </div>
@@ -541,13 +532,116 @@
              <div class="form-group">
                <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
                  <button type="reset" class="btn btn-primary">Resetear</button>
-                 <button type="button" id="editFigure" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+                 <button type="button" id="editTitle04" class="btn btn-success" data-dismiss="modal">Aceptar</button>
                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                </div>
              </div>
            </div>
          </div>
        </div>
+     </form>
+   </div>
+
+   <div class="modal fade" id="modalEditTitle05" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+             <h4 class="modal-title" id="myModalLabel">Editar Frase Publicaciones 2</h4>
+           </div>
+           <div class="modal-body">
+
+           <form id="editarTitulo05" action="" method="POST" data-parsley-validate class="form-horizontal form-label-left">
+             <div class="form-group">
+                 <label class="col-sm-3 control-label" for="title5">Título</label>
+                 <div class="col-sm-9">
+                     <input type="text" placeholder="Ingrese el texto para modificar" id="title5" class="form-control">
+                 </div>
+             </div>
+             <div class="ln_solid"></div>
+
+           </div>
+
+           <div class="modal-footer">
+             <div class="form-group">
+               <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                 <button type="reset" class="btn btn-primary">Resetear</button>
+                 <button type="button" id="editTitle05" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </form>
+   </div>
+
+   <div class="modal fade" id="modalEditTitle06" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+             <h4 class="modal-title" id="myModalLabel">Editar Frase Proyectos 1</h4>
+           </div>
+           <div class="modal-body">
+
+           <form id="editarTitulo06" action="" method="POST" data-parsley-validate class="form-horizontal form-label-left">
+             <div class="form-group">
+                 <label class="col-sm-3 control-label" for="title6">Título</label>
+                 <div class="col-sm-9">
+                     <input type="text" placeholder="Ingrese el texto para modificar" id="title6" class="form-control">
+                 </div>
+             </div>
+             <div class="ln_solid"></div>
+
+           </div>
+
+           <div class="modal-footer">
+             <div class="form-group">
+               <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                 <button type="reset" class="btn btn-primary">Resetear</button>
+                 <button type="button" id="editTitle06" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </form>
+   </div>
+
+   <div class="modal fade" id="modalEditTitle07" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+             <h4 class="modal-title" id="myModalLabel">Editar Frase Proyectos 2</h4>
+           </div>
+           <div class="modal-body">
+
+           <form id="editarTitulo07" action="" method="POST" data-parsley-validate class="form-horizontal form-label-left">
+             <div class="form-group">
+                 <label class="col-sm-3 control-label" for="title7">Título</label>
+                 <div class="col-sm-9">
+                     <input type="text" placeholder="Ingrese el texto para modificar" id="title7" class="form-control">
+                 </div>
+             </div>
+             <div class="ln_solid"></div>
+
+           </div>
+
+           <div class="modal-footer">
+             <div class="form-group">
+               <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                 <button type="reset" class="btn btn-primary">Resetear</button>
+                 <button type="button" id="editTitle07" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </form>
    </div>
 
 </body>

@@ -82,6 +82,16 @@ var loadDataJSON = function(){
       $(".contacto4").html(jsonObj.contactInfo.phone);
       $(".contacto5").html(jsonObj.contactInfo.email);
 
+      //frase del inicio
+      $(".fraseData1").html(jsonObj.otrasFrases.fraseTitulo);
+      $(".fraseData2").html(jsonObj.otrasFrases.fraseTitulo2);
+      $(".fraseMotivacional").html(jsonObj.otrasFrases.fraseMotivacional);
+
+      //frases de publicaciones y proyectos
+      $(".frase1Publications").html(jsonObj.otrasFrases.frase1Publications);
+      $(".frase2Publications").html(jsonObj.otrasFrases.frase2Publications);
+      $(".frase1Projects").html(jsonObj.otrasFrases.frase1Projects);
+      $(".frase2Projects").html(jsonObj.otrasFrases.frase2Projects);
     }
   }
   http_request.open("GET", data_file, true);
